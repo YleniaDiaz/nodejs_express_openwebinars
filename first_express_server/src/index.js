@@ -17,23 +17,27 @@ app.set('view engine', 'pug');
 
 app.get('/', (req, res)=>{
     //res.send('<h1>Hola mundo</h1>');
-    /*res.render('home', {
-        title: 'First layout',
-        message: 'Hello World'
-    });*/
-    res.write(`
+     /*res.write(`
         <h1>Curso Nodejs</h1>
-        <a href="/temario">Temario</a>
-    `)
+        <a href="/temaru">Temario</a>
+    `)*/
+    res.render('home', {
+        title: 'Curso Nodejs',
+        message: 'Home'
+    });
 
     res.end();
 });
 
 app.get('/temario', (req, res)=>{
-    res.write(`
+    /*res.write(`
         <h1>Temario</h1>
         <a href="/">Volver</a>
-    `)
+    `);*/
+    res.render('temary', {
+        title: 'Curso Nodejs',
+        message: 'Temario del curso'
+    });
 
     res.end();
 });
