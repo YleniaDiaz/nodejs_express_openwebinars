@@ -35,6 +35,13 @@ app.get('/temario', (req, res)=>{
     res.end();
 });
 
+app.get('/:user', (req, res)=>{
+    res.render('user', {
+        title: 'User',
+        message: `Welcome ${req.params.user}`
+    });
+});
+
 app.listen('9000', ()=>{
     console.log('SERVER OK (http://localhost:9000)');
 });
