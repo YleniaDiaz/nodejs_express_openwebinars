@@ -15,12 +15,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use('/static', express.static(path.join(__dirname, 'public')));
+
 app.get('/', (req, res)=>{
-    //res.send('<h1>Hola mundo</h1>');
-     /*res.write(`
-        <h1>Curso Nodejs</h1>
-        <a href="/temaru">Temario</a>
-    `)*/
     res.render('home', {
         title: 'Curso Nodejs',
         message: 'Home'
@@ -30,10 +27,6 @@ app.get('/', (req, res)=>{
 });
 
 app.get('/temario', (req, res)=>{
-    /*res.write(`
-        <h1>Temario</h1>
-        <a href="/">Volver</a>
-    `);*/
     res.render('temary', {
         title: 'Curso Nodejs',
         message: 'Temario del curso'
