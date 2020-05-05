@@ -42,6 +42,13 @@ app.get('/:user', (req, res)=>{
     });
 });
 
+app.use((req, res, next)=>{
+    res.render('404', {
+        title: 'ERROR',
+        message: 'La ruta a la que intenta acceder no existe'
+    });
+});
+
 app.listen('9000', ()=>{
     console.log('SERVER OK (http://localhost:9000)');
 });
