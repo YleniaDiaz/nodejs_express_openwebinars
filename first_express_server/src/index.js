@@ -3,6 +3,8 @@ import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 
+import router from './router';
+
 const app = express();
 app.disable('x-powered-by');
 
@@ -17,36 +19,14 @@ app.set('view engine', 'pug');
 
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res)=>{
-    res.render('home', {
-        title: 'Curso Nodejs',
-        message: 'Home'
-    });
-
-    res.end();
-});
-
-app.get('/temario', (req, res)=>{
-    res.render('temary', {
-        title: 'Curso Nodejs',
-        message: 'Temario del curso'
-    });
-
-    res.end();
-});
-
-app.get('/:user', (req, res)=>{
-    res.render('user', {
-        title: 'User',
-        message: `Welcome ${req.params.user}`
-    });
-});
+router(app);
 
 app.use((req, res, next)=>{
     res.render('404', {
         title: 'ERROR',
         message: 'La ruta a la que intenta acceder no existe'
     });
+    next();
 });
 
 app.listen('9000', ()=>{
