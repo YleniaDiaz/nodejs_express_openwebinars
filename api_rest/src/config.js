@@ -1,13 +1,18 @@
 import bodyParser from 'body-parser';
 import logger from 'morgan';
 import cors from 'cors';
+import {config} from 'dotenv';
+
+const SETTINGS=config();
+console.log(SETTINGS);
 
 export default app =>{
     app.disabled('x-powered-by');
 
-    app.set('env', process.env.NODE_ENV);
+    app.set('env', SETTINGS.parsed.ENV);
+    app.set('config', SETTINGS.parsed);
 
-    if(process.env.NODE_ENV !== 'test'){
+    if(SETTINGS.parsed.ENV !== 'test'){
         app.use(logger('combined'));
     }
 
