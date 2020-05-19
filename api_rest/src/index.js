@@ -13,7 +13,7 @@ const server ={
 
         router(app);
 
-        _server=app.listen('9000', ()=>{
+        _server=app.listen(app.locals.config.PORT, ()=>{
             if(process.env.NODE_ENV !== 'test'){
                 console.log('SERVER OK http://localhost:9000');
             }

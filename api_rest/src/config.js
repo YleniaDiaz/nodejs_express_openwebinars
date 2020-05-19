@@ -12,6 +12,9 @@ export default app =>{
     app.set('env', SETTINGS.parsed.ENV);
     app.set('config', SETTINGS.parsed);
 
+    app.locals.env = app.get('env');
+    app.locals.config=app.get('config');
+
     if(SETTINGS.parsed.ENV !== 'test'){
         app.use(logger('combined'));
     }

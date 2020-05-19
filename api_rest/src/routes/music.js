@@ -1,5 +1,6 @@
 import express from 'express';
-import mocks from '../../mokcs';
+import mocks from '../mokcs';
+import {auth} from '../midelwares';
 
 const router = express.Router();
 
@@ -7,11 +8,12 @@ router.get('/', (req, res, next)=>{
         res.status(200)
             .json(mocks);
     })
-    .post('/', (req, res, next)=>{
-        console.log(`BODY RECEIVED -> ${req.body}`);
-
+    .post('/', auth, (req, res, next)=>{
+        //console.log(`BODY RECEIVED -> ${req.body}`);
         res.status(201)
-            .json(req.body);
+            .json({
+                message: 'post ok'
+            });
     });
 
 router.get('/:singer', (req, res, next)=>{
