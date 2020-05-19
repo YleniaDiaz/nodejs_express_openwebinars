@@ -9,11 +9,9 @@ router.get('/', (req, res, next)=>{
             .json(mocks);
     })
     .post('/', auth, (req, res, next)=>{
-        //console.log(`BODY RECEIVED -> ${req.body}`);
+        console.log(`BODY RECEIVED -> ${JSON.stringify(req.body)}`);
         res.status(201)
-            .json({
-                message: 'post ok'
-            });
+            .json(req.body);
     });
 
 router.get('/:singer', (req, res, next)=>{

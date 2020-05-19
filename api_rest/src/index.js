@@ -13,11 +13,17 @@ const server ={
 
         router(app);
 
-        _server=app.listen(app.locals.config.PORT, ()=>{
+        const PORT = app.locals.config.PORT;
+        _server=app.listen(PORT, ()=>{
+            const ADDRESS = _server.address();
+            const HOST = ADDRESS.address === '::' ? 'localhost' : ADDRESS;
+
             if(process.env.NODE_ENV !== 'test'){
-                console.log('SERVER OK http://localhost:9000');
+                console.log(`SERVER OK http://${HOST}:${PORT}`);
             }
         });
+
+        return _server;
     },
     close(){
         _server.close();
