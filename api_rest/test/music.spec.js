@@ -1,7 +1,7 @@
 import request from 'supertest';
 
 import server from '../src';
-import mocks from '../src/mokcs';
+import mocks from '../mokcs';
 
 describe('Music', ()=>{
     let instance = undefined;
