@@ -1,8 +1,8 @@
 import express from 'express';
-import mocks from '../../mokcs';
+import mocks from '../mokcs';
 import {auth} from '../midelwares';
 import {send as wSend} from '../socket';
-import mokcs from '../../mokcs';
+import mokcs from '../mokcs';
 
 const router = express.Router();
 
